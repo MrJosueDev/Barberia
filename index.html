@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cañada Barber | Reserva tu cita online</title>
+<meta name="description" content="Cañada Barber - Barbería en Joyas de Cerén especializada en cortes modernos y clásicos. Reserva tu cita online fácil y rápido.">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:'Poppins', sans-serif;
+background:#0d0d0d;
+color:white;
+line-height:1.6;
+}
+
+header{
+height:100vh;
+background:url('img/barber.png') center/cover no-repeat;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+position:relative;
+}
+
+header::after{
+content:"";
+position:absolute;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.75);
+}
+
+header div{
+position:relative;
+z-index:2;
+}
+
+h1{
+font-family:'Playfair Display', serif;
+font-size:3rem;
+color:#d4af37;
+}
+
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:14px 35px;
+background:#d4af37;
+color:black;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn:hover{
+background:white;
+}
+
+section{
+padding:80px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:40px;
+color:#d4af37;
+font-size:2rem;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+border-radius:15px;
+height:300px;
+object-fit:cover;
+}
+
+.info{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+text-align:center;
+}
+
+.card{
+background:#1a1a1a;
+padding:25px;
+border-radius:15px;
+}
+
+.social a{
+margin:0 10px;
+color:#d4af37;
+text-decoration:none;
+font-weight:500;
+}
+
+footer{
+background:#111;
+text-align:center;
+padding:30px;
+color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div>
+<h1>Cañada Barber</h1>
+<p>Barbería en Joyas de Cerén<br>Cortes modernos y clásicos con estilo profesional.</p>
+
+<!-- 🔥 BOTÓN ACTUALIZADO -->
+<a href="citas.html" class="btn">Reservar cita online</a>
+
+</div>
+</header>
+
+<section>
+<h2 class="section-title">Nuestros Cortes</h2>
+<div class="gallery">
+<img src="img/1.png">
+<img src="img/2.png">
+<img src="img/3.png">
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Información</h2>
+<div class="info">
+<div class="card">
+<h3>Horarios</h3>
+<p>Martes a Domingo<br>8:00 AM - 6:00 PM</p>
+</div>
+
+<div class="card">
+<h3>Ubicación</h3>
+<p>Joyas de Cerén</p>
+<a href="https://maps.app.goo.gl/NMwkom53uLyB5brC8" class="btn">Ver en Google Maps</a>
+</div>
+
+<div class="card">
+<h3>Redes Sociales</h3>
+<div class="social">
+<a href="https://www.instagram.com/barber.canadaa?igsh=MXBqcDFpeW5laW1sZA==">Instagram</a>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 Cañada Barber | Joyas de Cerén
+</footer>
+
+</body>
+</html>

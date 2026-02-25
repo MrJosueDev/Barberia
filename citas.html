@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservar Cita | Cañada Barber</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:'Poppins', sans-serif;
+background:#0d0d0d;
+color:white;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.container{
+background:#1a1a1a;
+padding:40px;
+border-radius:20px;
+width:100%;
+max-width:600px;
+}
+
+h1{
+text-align:center;
+color:#d4af37;
+margin-bottom:30px;
+font-family:'Playfair Display', serif;
+}
+
+label{
+display:block;
+margin-top:15px;
+margin-bottom:5px;
+font-weight:500;
+}
+
+input{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:none;
+outline:none;
+margin-bottom:10px;
+}
+
+.horarios{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:10px;
+}
+
+.hora-btn{
+padding:10px;
+border-radius:10px;
+border:none;
+cursor:pointer;
+background:#333;
+color:white;
+transition:0.3s;
+}
+
+.hora-btn:hover{
+background:#d4af37;
+color:black;
+}
+
+.hora-btn.seleccionada{
+background:#d4af37;
+color:black;
+}
+
+.ocupada{
+background:red !important;
+cursor:not-allowed;
+}
+
+button.reservar{
+margin-top:20px;
+width:100%;
+padding:14px;
+border:none;
+border-radius:30px;
+background:#d4af37;
+font-weight:600;
+cursor:pointer;
+}
+
+.citas-lista{
+margin-top:30px;
+background:#111;
+padding:20px;
+border-radius:15px;
+}
+
+.cita-item{
+padding:8px;
+border-bottom:1px solid #333;
+font-size:14px;
+}
+
+.volver{
+display:block;
+text-align:center;
+margin-top:20px;
+color:#d4af37;
+text-decoration:none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Reservar Cita</h1>
+
+<label>Selecciona fecha</label>
+<input type="date" id="fecha">
+
+<label>Selecciona horario</label>
+<div class="horarios" id="horarios"></div>
+
+<label>Nombre</label>
+<input type="text" id="nombre" placeholder="Tu nombre">
+
+<label>Teléfono</label>
+<input type="text" id="telefono" placeholder="Tu teléfono">
+
+<button class="reservar" onclick="reservar()">Reservar cita</button>
+
+<div class="citas-lista">
+<h3 style="color:#d4af37;margin-bottom:10px;">Citas Programadas</h3>
+<div id="listaCitas"></div>
+</div>
+
+<a href="/" class="volver">← Volver al inicio</a>
+</div>
+
+<script>
+const contenedor = document.getElementById("horarios");
+const lista = document.getElementById("listaCitas");
+let horaSeleccionada = null;
+
+document.getElementById("fecha").addEventListener("change", cargarHorarios);
+
+async function cargarHorarios() {
+  const fecha = document.getElementById("fecha").value;
+  if(!fecha) return;
+
+  const res = await fetch(`/disponibilidad/${fecha}`);
+  const data = await res.json();
+
+  contenedor.innerHTML = "";
+  lista.innerHTML = "";
+  horaSeleccionada = null;
+
+  const horasBase = [
+    "08:00","09:00","10:00",
+    "11:00","12:00","13:00",
+    "14:00","15:00","16:00",
+    "17:00"
+  ];
+
+  horasBase.forEach(hora => {
+    const btn = document.createElement("button");
+    btn.textContent = hora;
+    btn.classList.add("hora-btn");
+
+    if (data.ocupadas.includes(hora)) {
+      btn.classList.add("ocupada");
+      btn.disabled = true;
+    } else {
+      btn.onclick = () => {
+        document.querySelectorAll(".hora-btn").forEach(b => b.classList.remove("seleccionada"));
+        btn.classList.add("seleccionada");
+        horaSeleccionada = hora;
+      };
+    }
+
+    contenedor.appendChild(btn);
+  });
+
+  if (data.citas.length === 0) {
+    lista.innerHTML = "<p style='opacity:0.6'>No hay citas para este día</p>";
+  } else {
+    data.citas
+      .sort((a,b)=> a.hora.localeCompare(b.hora))
+      .forEach(cita => {
+        const div = document.createElement("div");
+        div.classList.add("cita-item");
+        div.textContent = `${cita.hora} - ${cita.nombre}`;
+        lista.appendChild(div);
+      });
+  }
+}
+
+async function reservar(){
+  const fecha = document.getElementById("fecha").value;
+  const nombre = document.getElementById("nombre").value;
+  const telefono = document.getElementById("telefono").value;
+
+  if(!fecha || !horaSeleccionada || !nombre || !telefono){
+    alert("Completa todos los campos");
+    return;
+  }
+
+  const res = await fetch("/reservar", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ fecha, hora: horaSeleccionada, nombre, telefono })
+  });
+
+  const data = await res.json();
+
+  if(data.error){
+    alert("Esa hora ya fue reservada.");
+    cargarHorarios();
+  } else {
+    alert("Cita reservada con éxito 💈");
+    document.getElementById("nombre").value = "";
+    document.getElementById("telefono").value = "";
+    cargarHorarios();
+  }
+}
+</script>
+
+</body>
+</html>
