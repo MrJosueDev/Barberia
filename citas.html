@@ -151,23 +151,52 @@ let horaSeleccionada = null;
 
 document.getElementById("fecha").addEventListener("change", cargarHorarios);
 
+function generarHoras(inicio, fin) {
+  const horas = [];
+  let [h, m] = inicio.split(":").map(Number);
+  const [finH, finM] = fin.split(":").map(Number);
+
+  while (h < finH || (h === finH && m <= finM)) {
+    const horaFormateada =
+      String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0");
+    horas.push(horaFormateada);
+
+    m += 60; // intervalos de 1 hora
+    if (m >= 60) {
+      h++;
+      m = 0;
+    }
+  }
+
+  return horas;
+}
+
+function obtenerHorasPorDia(fecha) {
+  const dia = new Date(fecha).getDay(); // 0=Domingo
+
+  switch (dia) {
+    case 1: return generarHoras("08:30", "15:00"); // Lunes
+    case 2: return generarHoras("08:30", "18:00"); // Martes
+    case 3: return generarHoras("08:30", "18:30"); // Miércoles
+    case 4: return generarHoras("08:30", "18:00"); // Jueves
+    case 5: return generarHoras("08:30", "18:00"); // Viernes
+    case 6: return generarHoras("08:00", "18:00"); // Sábado
+    case 0: return generarHoras("08:30", "15:00"); // Domingo
+  }
+}
+
 async function cargarHorarios() {
   const fecha = document.getElementById("fecha").value;
   if(!fecha) return;
 
-  const res = await fetch(`/disponibilidad/${fecha}`);
-  const data = await res.json();
+  const horasBase = obtenerHorasPorDia(fecha);
 
   contenedor.innerHTML = "";
   lista.innerHTML = "";
   horaSeleccionada = null;
 
-  const horasBase = [
-    "08:00","09:00","10:00",
-    "11:00","12:00","13:00",
-    "14:00","15:00","16:00",
-    "17:00"
-  ];
+  const res = await fetch(`/disponibilidad/${fecha}`);
+  const data = await res.json();
 
   horasBase.forEach(hora => {
     const btn = document.createElement("button");
