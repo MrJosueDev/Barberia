@@ -175,13 +175,13 @@ function obtenerHorasPorDia(fecha) {
   const dia = new Date(fecha).getDay(); // 0=Domingo
 
   switch (dia) {
-    case 1: return generarHoras("08:30AM", "3:00PM"); // Lunes
-    case 2: return generarHoras("08:30AM", "6:00PM"); // Martes
-    case 3: return generarHoras("08:30AM", "6:30PM"); // Miércoles
-    case 4: return generarHoras("08:30AM", "6:00PM"); // Jueves
-    case 5: return generarHoras("08:30AM", "6:00"); // Viernes
-    case 6: return generarHoras("08:00AM", "6:00PM"); // Sábado
-    case 0: return generarHoras("08:30AM", "3:00PM"); // Domingo
+    case 1: return generarHoras("08:30", "15:00"); // Lunes
+    case 2: return generarHoras("08:30", "18:00"); // Martes
+    case 3: return generarHoras("08:30", "18:30"); // Miércoles
+    case 4: return generarHoras("08:30", "18:00"); // Jueves
+    case 5: return generarHoras("08:30", "18:00"); // Viernes
+    case 6: return generarHoras("08:00", "18:00"); // Sábado
+    case 0: return generarHoras("08:30", "15:00"); // Domingo
   }
 }
 
