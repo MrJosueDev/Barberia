@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Cañada Barber</title>
+    <style>
+        :root {
+            --primary: #ff6b00;     /* Naranja barber */
+            --accent: #00d4ff;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: var(--dark);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .navegacion ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: center;
+        }
+
+        .navegacion a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .navegacion a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                        url('https://spainbarbers.es/wp-content/uploads/2021/11/L3VEL3-SPIDER-WAX-TAPA-ABIERTA.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 10rem 1rem 6rem;
+        }
+
+        .hero h2 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Productos */
+        .productos {
+            padding: 5rem 0;
+            background: #f4f4f4;
+        }
+
+        .productos h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            padding: 1.8rem 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .card p {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero {
+                padding: 7rem 1rem 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Cañada Barber</h1>
+            <nav class="navegacion">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="https://wa.me/+50370097176" target="_blank">Contacto</a></li>
+                    <li><a href="citas.html">Reservar cita</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Bienvenidos al catálogo de Cañada Barber</h2>
+                <p>Lo mejor en productos premium para el cuidado de tu cabello y barba</p>
+            </div>
+        </section>
+
+        <section class="productos">
+            <div class="container">
+                <h2>Nuestros Productos</h2>
+
+                <div class="grid-productos">
+                    <article class="card">
+                        <img src="img/Crema formadora.jpeg" alt="Crema Formadora">
+                        <div class="card-content">
+                            <h3>Crema Formadora</h3>
+                            <p>$12.00</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="img/spide wax.jpeg" alt="Spider Wax">
+                        <div class="card-content">
+                            <h3>Spider Wax</h3>
+                            <p>$15.00</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="img/pomada.jpeg" alt="Pomada">
+                        <div class="card-content">
+                            <h3>Pomada</h3>
+                            <p>$12.00</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="img/pasta.jpeg" alt="Pasta Modeladora">
+                        <div class="card-content">
+                            <h3>Pasta Modeladora</h3>
+                            <p>$12.00</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="img/masilla.jpeg" alt="Masilla">
+                        <div class="card-content">
+                            <h3>Masilla</h3>
+                            <p>$12.00</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Cañada Barber | Joya de Cerén, El Salvador</p>
+            <p style="margin-top: 0.5rem; font-size: 0.95rem;">
+                Productos de alta calidad para tu estilo
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
