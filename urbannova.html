@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Nova - Ropa Urbana y Anime</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Urban Nova</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Bienvenidos a UrbanNova</h2>
+                <p>Explora tu estilo, compra fácil, rápido y seguro.<br>
+                Paga por transferencia bancaria o contra entrega.<br>
+                Envíos gratis o con costo adicional según tu ubicación.</p>
+            </div>
+        </section>
+
+        <section class="productos">
+            <div class="container">
+                <h2>Nuestros Productos</h2>
+
+                <div class="grid-productos">
+
+                    <!-- Producto 1 -->
+                    <article class="card">
+                        <img src="img/km.jpg" alt="Hoodie Inosuke">
+                        <div class="card-content">
+                            <h3>Hoodie de Inosuke de KNY</h3>
+                            <h2>$26.00</h2>
+                            <p>Talla M</p>
+                            <button data-producto="Hoodie de Inosuke de KNY" data-precio="$26.00" data-talla="Talla M">
+                                Pedir Por WhatsApp
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Producto 2 -->
+                    <article class="card">
+                        <img src="img/kity.jpg" alt="Hoodie Hello Kitty">
+                        <div class="card-content">
+                            <h3>Hoodie de Hello Kitty</h3>
+                            <h2>$20.00</h2>
+                            <p>Talla M</p>
+                            <button data-producto="Hoodie de Hello Kitty" data-precio="$20.00" data-talla="Talla M">
+                                Pedir Por WhatsApp
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Producto 3 -->
+                    <article class="card">
+                        <img src="img/pans.jpg" alt="Pantalón Chicas Superpoderosas">
+                        <div class="card-content">
+                            <h3>Pantalón Estilo Chicas Super Poderosas</h3>
+                            <h2>$14.00</h2>
+                            <p>Talla M</p>
+                            <button data-producto="Pantalón Estilo Chicas Super Poderosas" data-precio="$14.00" data-talla="Talla M">
+                                Pedir Por WhatsApp
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Producto 4 -->
+                    <article class="card">
+                        <img src="img/ace b.jpg" alt="Hoodie Ace">
+                        <img src="img/ace f.jpg" alt="Hoodie Ace">
+                        <div class="card-content">
+                            <h3>Hoodie de One Piece - Ace Puño de Fuego</h3>
+                            <h2>$26.00</h2>
+                            <p>Talla XL</p>
+                            <button data-producto="Hoodie de One Piece - Ace Puño de Fuego" data-precio="$26.00" data-talla="Talla XL">
+                                Pedir Por WhatsApp
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Producto 5 -->
+                    <article class="card">
+                        <img src="img/kotb.jpg" alt="Hoodie Tokyo">
+                        <img src="img/tokf.jpg" alt="Hoodie Tokyo">
+                        <div class="card-content">
+                            <h3>Hoodie Estilo Auto Tokyo</h3>
+                            <h2>$17.00</h2>
+                            <p>Talla L</p>
+                            <button data-producto="Hoodie Estilo Auto Tokyo" data-precio="$17.00" data-talla="Talla L">
+                                Pedir Por WhatsApp
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const telefono = "50370222882";   // ←←← CAMBIA ESTE NÚMERO por tu número real de WhatsApp
+
+        document.querySelectorAll('button').forEach(boton => {
+            boton.addEventListener('click', function() {
+                const producto = this.getAttribute('data-producto');
+                const precio = this.getAttribute('data-precio');
+                const talla = this.getAttribute('data-talla');
+
+                const mensaje = `¡Hola! Me interesa este producto:%0A%0A` +
+                                `🛍️ *${producto}*%0A` +
+                                `💰 Precio: ${precio}%0A` +
+                                `📏 Talla: ${talla}%0A%0A` +
+                                `¿Está disponible? Quiero comprarlo.`;
+
+                const url = `https://wa.me/${telefono}?text=${mensaje}`;
+                window.open(url, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>

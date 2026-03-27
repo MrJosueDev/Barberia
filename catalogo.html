@@ -6,7 +6,7 @@
     <title>Catálogo - Cañada Barber</title>
     <style>
         :root {
-            --primary: #ff6b00;     /* Naranja barber */
+            --primary: #ff6b00;
             --accent: #00d4ff;
             --dark: #1a1a1a;
             --light: #f8f9fa;
@@ -158,6 +158,65 @@
             margin-bottom: 1rem;
         }
 
+        /* Botón WhatsApp */
+        .btn-whatsapp {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+        }
+
+        /* === ANUNCIO HOODIES === */
+        .hoodies-banner {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .hoodies-banner h2 {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hoodies-banner p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-hoodies {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.3);
+        }
+
+        .btn-hoodies:hover {
+            background: #e55a00;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 0, 0.4);
+        }
+
         /* Footer */
         .footer {
             background: var(--dark);
@@ -170,13 +229,11 @@
             opacity: 0.8;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .header .container {
                 flex-direction: column;
                 text-align: center;
             }
-            
             .hero {
                 padding: 7rem 1rem 4rem;
             }
@@ -215,6 +272,10 @@
                         <div class="card-content">
                             <h3>Crema Formadora</h3>
                             <p>$12.00</p>
+                            <a href="https://wa.me/+50370097176?text=Hola,%20me%20interesa%20la%20Crema%20Formadora%20($12)" 
+                               target="_blank" class="btn-whatsapp">
+                                Pedir por WhatsApp
+                            </a>
                         </div>
                     </article>
 
@@ -223,6 +284,10 @@
                         <div class="card-content">
                             <h3>Spider Wax</h3>
                             <p>$15.00</p>
+                            <a href="https://wa.me/+50370097176?text=Hola,%20me%20interesa%20el%20Spider%20Wax%20($15)" 
+                               target="_blank" class="btn-whatsapp">
+                                Pedir por WhatsApp
+                            </a>
                         </div>
                     </article>
 
@@ -231,6 +296,10 @@
                         <div class="card-content">
                             <h3>Pomada</h3>
                             <p>$12.00</p>
+                            <a href="https://wa.me/+50370097176?text=Hola,%20me%20interesa%20la%20Pomada%20($12)" 
+                               target="_blank" class="btn-whatsapp">
+                                Pedir por WhatsApp
+                            </a>
                         </div>
                     </article>
 
@@ -239,6 +308,10 @@
                         <div class="card-content">
                             <h3>Pasta Modeladora</h3>
                             <p>$12.00</p>
+                            <a href="https://wa.me/+50370097176?text=Hola,%20me%20interesa%20la%20Pasta%20Modeladora%20($12)" 
+                               target="_blank" class="btn-whatsapp">
+                                Pedir por WhatsApp
+                            </a>
                         </div>
                     </article>
 
@@ -247,9 +320,24 @@
                         <div class="card-content">
                             <h3>Masilla</h3>
                             <p>$12.00</p>
+                            <a href="https://wa.me/+50370097176?text=Hola,%20me%20interesa%20la%20Masilla%20($12)" 
+                               target="_blank" class="btn-whatsapp">
+                                Pedir por WhatsApp
+                            </a>
                         </div>
                     </article>
                 </div>
+            </div>
+        </section>
+
+        <!-- === ANUNCIO HOODIES === -->
+        <section class="hoodies-banner">
+            <div class="container">
+                <h2>¿Quieres ver más?</h2>
+                <p>Descubre nuestro catálogo completo de Hoodies, sudaderas y ropa urbana de Urban Nova</p>
+                <a href="urbannova.html" target="_blank" class="btn-hoodies">
+                    Ver Catálogo de Hoodies →
+                </a>
             </div>
         </section>
     </main>
